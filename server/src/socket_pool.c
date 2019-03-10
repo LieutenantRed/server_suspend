@@ -27,13 +27,12 @@ int main(int argc, char** argv) {
 	memset(&host_addr, 0, sizeof(host_addr));
 	host_addr.sin_family = AF_INET;
 
-	struct sigaction act;
-	act.sa_handler = &nothing;
-	sigemptyset(&act.sa_mask);
-	act.sa_flags = 0;
+	// struct sigaction act;
+	// act.sa_handler = nothing;
+	// sigemptyset(&act.sa_mask);
+	// act.sa_flags = 0;
 
-	if (sigaction(SIGUSR1, &act, NULL) == -1)
-		handle_error("sigaction");
+	signal(SIGUSR1, nothing);
 
 	/*recieve options for server*/
 	int opt;
